@@ -12,6 +12,8 @@
   <% end %>
 
   <div class="field">
+    <p class="mb-1"><%= form.label :画像： %></p>
+    <%= image_tag(picture.image.url) if picture.image && picture.image.url %>
     <%= form.label :image %>
     <%= form.file_field :image %>
     

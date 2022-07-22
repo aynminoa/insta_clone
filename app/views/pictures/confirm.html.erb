@@ -1,14 +1,13 @@
 <h1 class="">確認画面</h1>
 <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
     <p>
-      <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p>
-      <%= form.hidden_field :image_cache %>
-    <p>
-    <p>
       <strong>コメント:</strong>
       <%= form.hidden_field :content %>
       <%= @picture.content %>
     </p>
+    <p>
+      <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p>
+      <%= form.hidden_field :image_cache %>
     <%= form.submit "投稿する", class:"btn btn-primary mb-4" %>
   </p>
 <% end %>
