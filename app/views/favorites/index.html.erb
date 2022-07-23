@@ -1,0 +1,25 @@
+    <p id="notice"><%= notice %></p>
+
+<h1>お気に入り画像一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+    
+    <% @favorites.each do |favorite| %>
+      <tr>
+        <td><%= favorite.user.name %></td>
+        <td><%= favorite.content %></td>
+        <td><%= image_tag favorite.image_url(:thumb) if favorite.image.present? %></td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to '投稿一覧に戻る', pictures_path %>
