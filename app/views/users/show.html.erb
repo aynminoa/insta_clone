@@ -4,4 +4,7 @@
 <p>プロフィール画像:<%= image_tag @user.image.url %></p>
 
 <%= link_to 'New Picture', new_picture_path %>
-<%= link_to 'Edit', edit_user_path(@user) %>
+
+<% if @user == current_user %>
+  <%= link_to 'Edit', edit_user_path(@user) %>
+<% end %>

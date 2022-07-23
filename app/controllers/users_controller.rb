@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  skip_before_action :login_required, only: [:new, :create, :update]
+  skip_before_action :login_required, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user, only: [:edit, :update ]
+
+  def index
+    @users = User.all
+  end
 
   def new
     @user = User.new
@@ -36,5 +41,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
   end
+
+    def authenticate_user
+    unless @user == current_user
+      redirect_to pictures_path
+    end
+  end
+
 
 end

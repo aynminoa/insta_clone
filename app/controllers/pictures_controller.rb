@@ -1,11 +1,13 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [ :show, :edit, :update, :destroy ]
+  before_action :authenticate_user, only: [ :edit, :update, :destroy ]
 
   def index
     @pictures = Picture.all
   end
 
   def show
+    @user = User.find(current_user.id)
   end
 
   def new
@@ -22,6 +24,7 @@ class PicturesController < ApplicationController
   def create
   @picture = current_user.pictures.build(picture_params)
     if @picture.save
+      PictureMailer.picture_mail(@picture).deliver
       redirect_to pictures_path, notice: "Picture was successfully created." 
     else
       render :new
@@ -47,11 +50,19 @@ class PicturesController < ApplicationController
   end
 
   private
-    def set_picture
-      @picture = Picture.find(params[:id])
-    end
 
-    def picture_params
-      params.require(:picture).permit(:image, :image_cache, :content)
+  def set_picture
+    @picture = Picture.find(params[:id])
+  end
+
+  def picture_params
+    params.require(:picture).permit(:image, :image_cache, :content)
+  end
+
+  def authenticate_user
+    unless @picture.user == current_user
+      redirect_to pictures_path
     end
+  end
+
 end
