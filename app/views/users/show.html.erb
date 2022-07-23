@@ -1,4 +1,5 @@
 <h1><%= @user.name %>のページ</h1>
+<%= link_to 'お気に入り一覧', favorites_path %>
 
 <p>メールアドレス: <%= @user.email %></p>
 <p>プロフィール画像:<%= image_tag @user.image.url %></p>
@@ -8,3 +9,4 @@
 <% if @user == current_user %>
   <%= link_to 'Edit', edit_user_path(@user) %>
 <% end %>
+
