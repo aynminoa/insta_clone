@@ -6,9 +6,20 @@
 </p>
 
 <p>
-  <strong>Image:</strong>
+  <strong>画像:</strong>
   <%= image_tag @picture.image.url %>
 </p>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<% if @picture.user == current_user %>
+  <%= link_to 'Edit', edit_picture_path(@picture) %> 
+<% end %>
+
+<% unless @picture.user_id == current_user.id %>
+  <% if @favorite.present? %>
+    <p><%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %></p>
+  <% else %>
+   <p><%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %></p>
+  <% end %>
+<% end %>
+
 <%= link_to 'Back', pictures_path %>

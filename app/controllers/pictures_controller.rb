@@ -7,7 +7,7 @@ class PicturesController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
+    @favorite = current_user.favorites.find_by(picture_id: @picture.id)
   end
 
   def new
