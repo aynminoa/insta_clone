@@ -1,9 +1,7 @@
 <div class="wrapper">
-  <p id="notice"><%= notice %></p>
-  
   <h1><%= current_user.name %>さんのお気に入り画像一覧</h1>
   
-  <table class="text-left">
+  <table class="text-left mb-4">
     <thead>
       <tr class="border-bottom">
         <th class="col-2 pl-0 pb-2">投稿者</th>
@@ -11,18 +9,17 @@
         <th class="col-2 pl-0 pb-2">画像</th>
       </tr>
     </thead>
-      
-      <% @favorites.each do |favorite| %>
-        <tr class="border-bottom">
-          <td class="pt-4 pb-4"><%= favorite.user.name %></td>
-          <td class="pt-4 pb-4"><%= favorite.content %></td>
-          <td class="pt-4 pb-4"><%= image_tag favorite.image_url(:thumb) if favorite.image.present? %></td>
-        </tr>
-      <% end %>
-      </tbody>
+
+    <tbody>
+    <% @favorites.each do |favorite| %>
+      <tr class="border-bottom">
+        <td class="pt-4 pb-4"><%= favorite.user.name %></td>
+        <td class="pt-4 pb-4"><%= favorite.content %></td>
+        <td class="pt-4 pb-4"><%= image_tag favorite.image_url(:thumb) if favorite.image.present? %></td>
+      </tr>
+    <% end %>
+    </tbody>
   </table>
-  
-  <br>
   
   <p><%= link_to '投稿一覧に戻る', pictures_path, class:"btn btn-light"  %></p>
 </div>

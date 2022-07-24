@@ -1,24 +1,23 @@
 <div class="wrapper">
-  <p id="notice"><%= notice %></p>
   <h1>投稿詳細</h1>
-  <p>
-    <strong>コメント：</strong>
-    <%= @picture.content %>
-  </p>
-  
-  <p><strong>画像:</strong></p>
-  <p><%= image_tag @picture.image.url %></p>
-  
-  <p class="mt-3"><%= link_to '投稿一覧に戻る', pictures_path, class:"btn btn-light" %></p>
-  <% if @picture.user == current_user %>
-    <p><%= link_to '編集する', edit_picture_path(@picture), class:"btn btn-light" %> </p>
-  <% end %>
+    <p>
+      <strong>コメント：</strong>
+      <%= @picture.content %>
+    </p>
+    
+    <p><strong>画像:</strong></p>
+    <p><%= image_tag @picture.image.url %></p>
+    
+    <p class="mt-3"><%= link_to '投稿一覧に戻る', pictures_path, class:"btn btn-light" %></p>
+    <% if @picture.user == current_user %>
+      <p><%= link_to '編集する', edit_picture_path(@picture), class:"btn btn-light" %> </p>
+    <% end %>
   
   <% unless @picture.user_id == current_user.id %>
     <% if @favorite.present? %>
       <p><%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-light' %></p>
     <% else %>
-     <p><%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-light' %></p>
+      <p><%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-light' %></p>
     <% end %>
   <% end %>
 </div>

@@ -24,7 +24,7 @@ class PicturesController < ApplicationController
   @picture = current_user.pictures.build(picture_params)
     if @picture.save
       PictureMailer.picture_mail(@picture).deliver
-      redirect_to pictures_path, notice: "Picture was successfully created." 
+      redirect_to pictures_path, notice: "投稿が完了しました" 
     else
       render :new
     end
@@ -37,7 +37,7 @@ class PicturesController < ApplicationController
 
   def update
     if @picture.update(picture_params)
-      redirect_to pictures_path, notice: "Picture was successfully updated." 
+      redirect_to pictures_path, notice: "投稿が更新されました" 
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class PicturesController < ApplicationController
 
   def destroy
     @picture.destroy
-      redirect_to pictures_url, notice: "Picture was successfully destroyed." 
+      redirect_to pictures_url, notice: "投稿が削除されました" 
   end
 
   private
