@@ -1,12 +1,15 @@
-<h1><%= @user.name %>のページ</h1>
-<%= link_to 'お気に入り一覧', favorites_path %>
+<div class="wrapper">
+  <h1><%= @user.name %>さんの登録情報</h1>
+  <%= link_to 'お気に入り画像一覧へ', favorites_path, class:"mb-3 text-white" %>
 
-<p>メールアドレス: <%= @user.email %></p>
-<p>プロフィール画像:<%= image_tag @user.image.url %></p>
-
-<%= link_to 'New Picture', new_picture_path %>
-
-<% if @user == current_user %>
-  <%= link_to 'Edit', edit_user_path(@user) %>
-<% end %>
-
+  <p>メールアドレス: <%= @user.email %></p>
+  <p>プロフィール画像:</p>
+  <p><%= image_tag @user.image.url %></p>
+  
+  <% if @user == current_user %>
+  <p><%= link_to '編集', edit_user_path(@user), class:"btn btn-light" %></p>
+  <% end %>
+  
+  <p><%= link_to '新規投稿を作成', new_picture_path, class:"btn btn-light" %></p>
+</div>
+  

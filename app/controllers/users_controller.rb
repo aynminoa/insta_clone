@@ -43,9 +43,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
   end
 
-    def authenticate_user
+  def authenticate_user
     unless @user == current_user
-      redirect_to pictures_path
+      redirect_to user_path
     end
   end
 

@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+body {
+  background: linear-gradient(-135deg, #E4A972, #9941D8) fixed;
+}
+
+a:hover {
+  background-color: transparent;
+}
+
+h1 {
+  padding-top: $spacer * 3 !important;
+  padding-bottom: $spacer * 1.5 !important;
+}
+
+.wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}

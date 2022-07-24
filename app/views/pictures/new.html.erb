@@ -1,5 +1,7 @@
-<h1>New Picture</h1>
-
-<%= render 'form', picture: @picture %>
-
-<%= link_to 'Back', pictures_path %>
+<div class="wrapper">
+  <h1>新規投稿</h1>
+  
+  <%= render 'form', picture: @picture %>
+  
+  <p><%= link_to '投稿一覧へ', pictures_path, class:"btn btn-light" %></p>
+</div>
