@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create, :edit, :update]
-  before_action :authenticate_user, only: [:update ]
+  before_action :authenticate_user, only: [:show, :edit, :update ]
 
   def index
     @users = User.all
@@ -44,10 +44,11 @@ class UsersController < ApplicationController
   end
 
   def authenticate_user
+    @user = User.find(params[:id])
     unless @user == current_user
-      redirect_to user_path
+      flash[:danger] = "アクセスする権限がありません"
+      redirect_to new_session_path
     end
   end
-
 
 end
