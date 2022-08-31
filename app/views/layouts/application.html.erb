@@ -19,11 +19,12 @@
         <div class="pt-3">
           <div class="d-flex flex-row">
             <% if logged_in? %>
-              <%= link_to "Profile", user_path(current_user.id), class:"mr-4 text-white" %>
-              <%= link_to "Logout", session_path(current_user.id), method: :delete, class:"text-white"  %>
+              <%= link_to "Profile", user_path(current_user.id), class:"text-white nav-link" %>
+              <%= link_to "Logout", session_path(current_user.id), method: :delete, class:"text-white nav-link" %> 
+              <%= link_to "投稿一覧", pictures_path, class:"text-white nav-link" %> 
             <% else %>
-              <%= link_to "Sign up", new_user_path, class:"mr-4 text-white" %>
-              <%= link_to "Login", new_session_path, class:"text-white" %>
+              <%= link_to "Sign up", new_user_path, class:"text-white nav-link" %>
+              <%= link_to "Login", new_session_path, class:"text-white nav-link" %>
             <% end %>
           </div>
         </div>
